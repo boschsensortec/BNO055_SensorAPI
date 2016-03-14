@@ -17,9 +17,9 @@ INTRODUCTION
 VERSION
 =========
 	- Version of bno055 sensor driver is:
-		* bno055.c 		- V2.0.2
-		* bno055.h 		- V2.0.2
-		* bno055_support.c 	- V1.0.3
+		* bno055.c 		- V2.0.3
+		* bno055.h 		- V2.0.3
+		* bno055_support.c 	- V1.0.4
 
 INTEGRATION DETAILS
 =====================
@@ -56,6 +56,6 @@ SUPPORTED SENSOR INTERFACE
 
 COPYRIGHT
 ===========
-	- Copyright (C) 2013 - 2014 Bosch Sensortec GmbH
+	- Copyright (C) 2015 - 2016 Bosch Sensortec GmbH
 
 
