@@ -520,7 +520,6 @@ s8 BNO055_I2C_bus_write(u8 dev_addr, u8 reg_addr, u8 *reg_data, u8 cnt)
 	for (stringpos = BNO055_INIT_VALUE; stringpos < cnt; stringpos++)
 		array[stringpos + BNO055_I2C_BUS_WRITE_ARRAY_INDEX] =
 			*(reg_data + stringpos);
-	}
 	/*
 	* Please take the below APIs as your reference for
 	* write the data using I2C communication
