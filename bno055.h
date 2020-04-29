@@ -78,7 +78,7 @@ typedef u_int64_t u64; /**< used for unsigned 64bit */
  * These definition uses for define the C
  * standard version data types
  ***********************************************************/
-# if !defined(__STDC_VERSION__)
+#if defined(__STDC_VERSION__)
 
 /************************************************
 * compiler is C11 C standard
@@ -128,7 +128,7 @@ typedef int64_t s64; /**< used for signed 64bit */
 * compiler is C89 or other C standard
 ************************************************/
 
-#else /*  !defined(__STDC_VERSION__) */
+#else /* defined(__STDC_VERSION__) */
 
 /*!
  * @brief By default it is defined as 32 bit machine configuration
