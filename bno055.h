@@ -6662,6 +6662,47 @@ BNO055_RETURN_FUNCTION_TYPE bno055_get_intr_mask_accel_no_motion(u8 *accel_nomot
  */
 BNO055_RETURN_FUNCTION_TYPE bno055_set_intr_mask_accel_no_motion(u8 accel_nomotion_u8);
 
+
+/*!
+ *  @brief This API used to write the Accelerometer Data-Ready interrupt
+ *  from page one register from 0x10 bit 0
+ * *
+ *  @param intrmask_u8 : Mask of interrupts to enable:
+ *   - BNO055_ACC_BSX_DRDY_INTR_MSK
+ *   - BNO055_MAG_DRDY_INTR_MSK
+ *   - BNO055_GYRO_ANY_MOTION_INTR_MSK
+ *   - BNO055_GYRO_HIGHRATE_INTR_MSK
+ *   - BNO055_GYR_DRDY_INTR_MSK
+ *   - BNO055_ACCEL_HIGH_G_INTR_MSK
+ *   - BNO055_ACCEL_ANY_MOTION_INTR_MSK
+ *   - BNO055_ACCEL_NO_MOTION_INTR_MSK
+ *
+ *  @return results of bus communication function
+ *  @retval 0 -> BNO055_SUCCESS
+ *  @retval 1 -> BNO055_ERROR
+ */
+BNO055_RETURN_FUNCTION_TYPE bno055_enable_intr( u8 intrmask_u8 );
+
+/*!
+ *  @brief This API used to write the Accelerometer Data-Ready interrupt
+ *  from page one register from 0x10 bit 0
+ * *
+ *  @param intrmask_u8 : Mask of interrupts to disable:
+ *   - BNO055_ACC_BSX_DRDY_INTR_MSK
+ *   - BNO055_MAG_DRDY_INTR_MSK
+ *   - BNO055_GYRO_ANY_MOTION_INTR_MSK
+ *   - BNO055_GYRO_HIGHRATE_INTR_MSK
+ *   - BNO055_GYR_DRDY_INTR_MSK
+ *   - BNO055_ACCEL_HIGH_G_INTR_MSK
+ *   - BNO055_ACCEL_ANY_MOTION_INTR_MSK
+ *   - BNO055_ACCEL_NO_MOTION_INTR_MSK
+ *
+ *  @return results of bus communication function
+ *  @retval 0 -> BNO055_SUCCESS
+ *  @retval 1 -> BNO055_ERROR
+ */
+BNO055_RETURN_FUNCTION_TYPE bno055_disable_intr( u8 intrmask_u8 );
+
 /*****************************************************/
 /**\name FUNCTIONS FOR GYRO INTERRUPT */
 /*****************************************************/

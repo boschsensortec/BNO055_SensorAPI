@@ -14459,6 +14459,132 @@ BNO055_RETURN_FUNCTION_TYPE bno055_set_intr_mask_accel_no_motion(u8 accel_nomoti
 }
 
 /*!
+ *  @brief This API used to write the Accelerometer Data-Ready interrupt
+ *  from page one register from 0x10 bit 0
+ * *
+ *  @param intrmask_u8 : Mask of interrupts to enable:
+ *   - BNO055_ACC_BSX_DRDY_INTR_MSK
+ *   - BNO055_MAG_DRDY_INTR_MSK
+ *   - BNO055_GYRO_ANY_MOTION_INTR_MSK
+ *   - BNO055_GYRO_HIGHRATE_INTR_MSK
+ *   - BNO055_GYR_DRDY_INTR_MSK
+ *   - BNO055_ACCEL_HIGH_G_INTR_MSK
+ *   - BNO055_ACCEL_ANY_MOTION_INTR_MSK
+ *   - BNO055_ACCEL_NO_MOTION_INTR_MSK
+ *
+ *  @return results of bus communication function
+ *  @retval 0 -> BNO055_SUCCESS
+ *  @retval 1 -> BNO055_ERROR
+ */
+BNO055_RETURN_FUNCTION_TYPE bno055_enable_intr( u8 intrmask_u8 )
+{
+    BNO055_RETURN_FUNCTION_TYPE com_rslt = BNO055_ERROR;
+    u8 data_u8r = BNO055_INIT_VALUE;
+    s8 stat_s8 = BNO055_ERROR;
+
+    /* Check the struct p_bno055 is empty */
+    if( p_bno055 == NULL )
+    {
+        return BNO055_E_NULL_PTR;
+    }
+    else
+    {
+        /*condition check for page, Accelerometer Data-Ready interrupt  is
+         * available in the page one*/
+        if( p_bno055->page_id != BNO055_PAGE_ONE )
+        {
+            /* Write page as one */
+            stat_s8 = bno055_write_page_id( BNO055_PAGE_ONE );
+        }
+        if( (stat_s8 == BNO055_SUCCESS) || (p_bno055->page_id == BNO055_PAGE_ONE) )
+        {
+            /* Write the value of Accelerometer Data-Ready interrupt */
+            com_rslt = p_bno055->BNO055_BUS_READ_FUNC( p_bno055->dev_addr,
+                                                       BNO055_INT_ADDR,
+                                                       &data_u8r,
+                                                       BNO055_GEN_READ_WRITE_LENGTH );
+            if( com_rslt == BNO055_SUCCESS )
+            {
+                data_u8r |= intrmask_u8;
+                com_rslt += p_bno055->BNO055_BUS_WRITE_FUNC( p_bno055->dev_addr,
+                                                             BNO055_INT_ADDR,
+                                                             &data_u8r,
+                                                             BNO055_GEN_READ_WRITE_LENGTH );
+            }
+        }
+        else
+        {
+            com_rslt = BNO055_ERROR;
+        }
+    }
+
+    return com_rslt;
+}
+
+/*!
+ *  @brief This API used to write the Accelerometer Data-Ready interrupt
+ *  from page one register from 0x10 bit 0
+ * *
+ *  @param intrmask_u8 : Mask of interrupts to disable:
+ *   - BNO055_ACC_BSX_DRDY_INTR_MSK
+ *   - BNO055_MAG_DRDY_INTR_MSK
+ *   - BNO055_GYRO_ANY_MOTION_INTR_MSK
+ *   - BNO055_GYRO_HIGHRATE_INTR_MSK
+ *   - BNO055_GYR_DRDY_INTR_MSK
+ *   - BNO055_ACCEL_HIGH_G_INTR_MSK
+ *   - BNO055_ACCEL_ANY_MOTION_INTR_MSK
+ *   - BNO055_ACCEL_NO_MOTION_INTR_MSK
+ *
+ *  @return results of bus communication function
+ *  @retval 0 -> BNO055_SUCCESS
+ *  @retval 1 -> BNO055_ERROR
+ */
+BNO055_RETURN_FUNCTION_TYPE bno055_disable_intr( u8 intrmask_u8 )
+{
+    BNO055_RETURN_FUNCTION_TYPE com_rslt = BNO055_ERROR;
+    u8 data_u8r = BNO055_INIT_VALUE;
+    s8 stat_s8 = BNO055_ERROR;
+
+    /* Check the struct p_bno055 is empty */
+    if( p_bno055 == NULL )
+    {
+        return BNO055_E_NULL_PTR;
+    }
+    else
+    {
+        /*condition check for page, Accelerometer Data-Ready interrupt  is
+         * available in the page one*/
+        if( p_bno055->page_id != BNO055_PAGE_ONE )
+        {
+            /* Write page as one */
+            stat_s8 = bno055_write_page_id( BNO055_PAGE_ONE );
+        }
+        if( (stat_s8 == BNO055_SUCCESS) || (p_bno055->page_id == BNO055_PAGE_ONE) )
+        {
+            /* Write the value of Accelerometer Data-Ready interrupt */
+            com_rslt = p_bno055->BNO055_BUS_READ_FUNC( p_bno055->dev_addr,
+                                                       BNO055_INT_ADDR,
+                                                       &data_u8r,
+                                                       BNO055_GEN_READ_WRITE_LENGTH );
+            if( com_rslt == BNO055_SUCCESS )
+            {
+                data_u8r &= ~intrmask_u8;
+                com_rslt += p_bno055->BNO055_BUS_WRITE_FUNC( p_bno055->dev_addr,
+                                                             BNO055_INT_ADDR,
+                                                             &data_u8r,
+                                                             BNO055_GEN_READ_WRITE_LENGTH );
+            }
+        }
+        else
+        {
+            com_rslt = BNO055_ERROR;
+        }
+    }
+
+    return com_rslt;
+}
+
+/*!
  *  @brief This API used to read the gyro anymotion interrupt
  *  from page one register from 0x10 bit 2
  *
