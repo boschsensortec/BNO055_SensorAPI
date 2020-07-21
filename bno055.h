@@ -1502,6 +1502,19 @@ struct bno055_sic_matrix_t
 #define BNO055_SELFTEST_MCU_REG                   BNO055_SELFTEST_RESULT_ADDR
 
 /*Interrupt status registers*/
+
+/* @note Firmware >v3.14 */
+#define BNO055_INTR_STAT_ACC_BSX_DRDY_POS         (0)
+#define BNO055_INTR_STAT_ACC_BSX_DRDY_MSK         (0X01)
+#define BNO055_INTR_STAT_ACC_BSX_DRDY_LEN         (1)
+#define BNO055_INTR_STAT_ACC_BSX_DRDY_REG         BNO055_INTR_STAT_ADDR
+
+/* @note Firmware >v3.14 */
+#define BNO055_INTR_STAT_MAG_DRDY_POS             (1)
+#define BNO055_INTR_STAT_MAG_DRDY_MSK             (0X02)
+#define BNO055_INTR_STAT_MAG_DRDY_LEN             (1)
+#define BNO055_INTR_STAT_MAG_DRDY_REG             BNO055_INTR_STAT_ADDR
+
 #define BNO055_INTR_STAT_GYRO_ANY_MOTION_POS      (2)
 #define BNO055_INTR_STAT_GYRO_ANY_MOTION_MSK      (0X04)
 #define BNO055_INTR_STAT_GYRO_ANY_MOTION_LEN      (1)
@@ -1511,6 +1524,12 @@ struct bno055_sic_matrix_t
 #define BNO055_INTR_STAT_GYRO_HIGHRATE_MSK        (0X08)
 #define BNO055_INTR_STAT_GYRO_HIGHRATE_LEN        (1)
 #define BNO055_INTR_STAT_GYRO_HIGHRATE_REG        BNO055_INTR_STAT_ADDR
+
+/* @note Firmware >v3.14 */
+#define BNO055_INTR_STAT_GYR_DRDY_POS             (4)
+#define BNO055_INTR_STAT_GYR_DRDY_MSK             (0X10)
+#define BNO055_INTR_STAT_GYR_DRDY_LEN             (1)
+#define BNO055_INTR_STAT_GYR_DRDY_REG             BNO055_INTR_STAT_ADDR
 
 #define BNO055_INTR_STAT_ACCEL_HIGH_G_POS         (5)
 #define BNO055_INTR_STAT_ACCEL_HIGH_G_MSK         (0X20)
@@ -1946,6 +1965,18 @@ struct bno055_sic_matrix_t
 #define BNO055_MAG_SLEEP_DURN_REG              BNO055_MAG_SLEEP_CONFIG_ADDR
 
 /* Interrupt registers*/
+/* Accelerometer Data-Ready interrupt msk register @note Firmware >v3.14 */
+#define BNO055_ACC_BSX_DRDY_INTR_MASK_POS      (0)
+#define BNO055_ACC_BSX_DRDY_INTR_MASK_MSK      (0X01)
+#define BNO055_ACC_BSX_DRDY_INTR_MASK_LEN      (1)
+#define BNO055_ACC_BSX_DRDY_INTR_MASK_REG      BNO055_INT_MASK_ADDR
+
+/* Magnetometer Data-Ready interrupt msk register @note Firmware >v3.14 */
+#define BNO055_MAG_DRDY_INTR_MASK_POS          (1)
+#define BNO055_MAG_DRDY_INTR_MASK_MSK          (0X02)
+#define BNO055_MAG_DRDY_INTR_MASK_LEN          (1)
+#define BNO055_MAG_DRDY_INTR_MASK_REG          BNO055_INT_MASK_ADDR
+
 /* Gyro any motion interrupt msk register*/
 #define BNO055_GYRO_ANY_MOTION_INTR_MASK_POS   (2)
 #define BNO055_GYRO_ANY_MOTION_INTR_MASK_MSK   (0X04)
@@ -1957,6 +1988,12 @@ struct bno055_sic_matrix_t
 #define BNO055_GYRO_HIGHRATE_INTR_MASK_MSK     (0X08)
 #define BNO055_GYRO_HIGHRATE_INTR_MASK_LEN     (1)
 #define BNO055_GYRO_HIGHRATE_INTR_MASK_REG     BNO055_INT_MASK_ADDR
+
+/* Magnetometer Data-Ready interrupt msk register @note Firmware >v3.14 */
+#define BNO055_GYR_DRDY_INTR_MASK_POS          (4)
+#define BNO055_GYR_DRDY_INTR_MASK_MSK          (0X10)
+#define BNO055_GYR_DRDY_INTR_MASK_LEN          (1)
+#define BNO055_GYR_DRDY_INTR_MASK_REG          BNO055_INT_MASK_ADDR
 
 /* Accel high g interrupt msk register*/
 #define BNO055_ACCEL_HIGH_G_INTR_MASK_POS      (5)
@@ -1976,6 +2013,18 @@ struct bno055_sic_matrix_t
 #define BNO055_ACCEL_NO_MOTION_INTR_MASK_LEN   (1)
 #define BNO055_ACCEL_NO_MOTION_INTR_MASK_REG   BNO055_INT_MASK_ADDR
 
+/* Accelerometer Data-Ready interrupt register @note Firmware >v3.14 */
+#define BNO055_ACC_BSX_DRDY_INTR_POS           (0)
+#define BNO055_ACC_BSX_DRDY_INTR_MSK           (0X01)
+#define BNO055_ACC_BSX_DRDY_INTR_LEN           (1)
+#define BNO055_ACC_BSX_DRDY_INTR_REG           BNO055_INT_ADDR
+
+/* Magnetometer Data-Ready interrupt register @note Firmware >v3.14*/
+#define BNO055_MAG_DRDY_INTR_POS               (1)
+#define BNO055_MAG_DRDY_INTR_MSK               (0X02)
+#define BNO055_MAG_DRDY_INTR_LEN               (1)
+#define BNO055_MAG_DRDY_INTR_REG               BNO055_INT_ADDR
+
 /* Gyro any motion interrupt register*/
 #define BNO055_GYRO_ANY_MOTION_INTR_POS        (2)
 #define BNO055_GYRO_ANY_MOTION_INTR_MSK        (0X04)
@@ -1987,6 +2036,12 @@ struct bno055_sic_matrix_t
 #define BNO055_GYRO_HIGHRATE_INTR_MSK          (0X08)
 #define BNO055_GYRO_HIGHRATE_INTR_LEN          (1)
 #define BNO055_GYRO_HIGHRATE_INTR_REG          BNO055_INT_ADDR
+
+/* Gyro Data-Ready interrupt register @note Firmware >v3.14*/
+#define BNO055_GYR_DRDY_INTR_POS               (4)
+#define BNO055_GYR_DRDY_INTR_MSK               (0X10)
+#define BNO055_GYR_DRDY_INTR_LEN               (1)
+#define BNO055_GYR_DRDY_INTR_REG               BNO055_INT_ADDR
 
 /* Accel high g interrupt register*/
 #define BNO055_ACCEL_HIGH_G_INTR_POS           (5)
