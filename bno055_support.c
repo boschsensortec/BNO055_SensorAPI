@@ -59,8 +59,8 @@
  */
 s8 BNO055_I2C_bus_read(u8 dev_addr, u8 reg_addr, u8 *reg_data, u8 cnt);
 
-/*  \Brief: The API is used as SPI bus write
- *  \Return : Status of the SPI write
+/*  \Brief: The API is used as I2C bus write
+ *  \Return : Status of the I2C write
  *  \param dev_addr : The device address of the sensor
  *  \param reg_addr : Address of the first register,
  *   will data is going to be written
